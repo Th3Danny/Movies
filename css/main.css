@@ -1,0 +1,437 @@
+:root {
+  --rojo: #E50914;
+  --fondo: #141414;
+}
+
+/* Reiniciar los estilos que el navegador tiene por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--fondo);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.contenedor {
+  width: 95%;
+  margin: auto;
+}
+
+header {
+  padding: 15px 0;
+}
+
+header .contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centrar verticalmente */
+}
+
+header .logotipo {
+  font-family: "Bebas Neue", cursive;
+  font-weight: normal;
+  color: var(--rojo);
+  font-size: 40px;
+  text-decoration: none; /* Elimina cualquier subrayado que pueda haber */
+}
+
+
+
+/* Estilos del menú */
+header nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+}
+
+header nav a::before {
+  margin-left: auto;
+}
+
+header nav a::after,
+a::before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #f44336;
+  display: block;
+  transition: 0.5s;
+}
+
+a:hover::after,
+a:hover::before {
+  width: 100%;
+}
+
+/* Película principal */
+.carousel {
+  width: 70%; /* Cambia el ancho al 80% */
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-list {
+  display: flex;
+  width: 100%; /* Ancho suficiente para todas las imágenes */
+  animation: desplazamiento 30s linear infinite; /* Cambia de imagen cada 30 segundos */
+}
+
+.carousel-item {
+  flex: 0 0 80%; /* Establece el ancho de cada imagen al 80% del carrusel */
+  max-width: 400px; /* Establece un ancho máximo para las imágenes */
+  margin: 0 auto; /* Centra las imágenes horizontalmente */
+}
+
+.carousel-item img {
+  width: 80%; /* Hace que las imágenes ocupen todo el ancho del espacio del carrusel */
+  height: auto; /* Mantiene la proporción de aspecto */
+}
+
+@keyframes desplazamiento {
+  0% {
+    transform: translateX(0%); /* Comienza en la primera imagen */
+  }
+  33.33% {
+    transform: translateX(-100%); /* Cambia a la segunda imagen */
+  }
+  66.66% {
+    transform: translateX(-200%); /* Cambia a la tercera imagen */
+  }
+  100% {
+    transform: translateX(0%); /* Vuelve a la primera imagen */
+  }
+}
+
+.pelicula-principal {
+  font-size: 16px;
+  min-height: 40.62em;
+  color: white;
+  margin-bottom: 3.12em;
+  display: flex;
+  align-items: flex-end;
+}
+
+.pelicula-principal .contenedor {
+  margin: 0 auto;
+  margin-bottom: 6.25em;
+  display: flex;
+  flex-direction: column; /* Cambia a dirección de columna */
+  align-items: center; /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  height: 80%; /* Ajusta la altura para ocupar el 80% de la altura de la pantalla */
+}
+
+.pelicula-principal .titulo {
+  font-weight: 600;
+  font-size: 3.12em;
+  margin-bottom: 0.4em;
+}
+
+.pelicula-principal .descripcion {
+  font-weight: normal;
+  font-size: 1em;
+  line-height: 1.75em;
+  max-width: 50%;
+  margin-bottom: 1.25em;
+}
+
+.pelicula-principal .boton {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 0.31em;
+  padding: 0.93em 1.87em;
+  color: white;
+  margin-right: 1.25em;
+  cursor: pointer;
+  transition: 0.3s ease all;
+  font-size: 1.12em;
+}
+
+.pelicula-principal .boton:hover {
+  background-color: white;
+  color: #000;
+}
+
+.pelicula-principal .boton i {
+  margin-right: 1.25em;
+}
+
+/* separador de elementos*/
+
+.texto-separador {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: white;
+  font-size: 35px;
+  box-shadow: 0px 0px 10px 5px #00000088;
+  background-color: #00000099;
+  margin: 10px 0;
+  position: relative; /* Agregar posición relativa al contenedor */
+}
+
+.texto-separador::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Colocar la línea en la parte inferior del contenedor */
+  left: 0; /* Ajustar la posición izquierda para abarcar todo el ancho */
+  width: 100%; /* Asegurarse de que la línea abarque todo el ancho */
+  height: 5px; /* Grosor de la línea */
+
+  box-shadow: 0px 0px 10px 5px #00000088;
+  background-color: #00000099;
+}
+
+
+/*carts*/
+
+/* Estilos para las secciones de cartas */
+.cart-arriba,
+.cart-abajo {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px; /* Ajusta el margen según sea necesario */
+  width: 70%; /* Ancho del contenedor de cartas */
+}
+
+/* Estilos para las cartas individuales */
+.card {
+  margin: 1.5em; /* Aumentar el margen para separar más las cartas */
+  overflow: visible;
+  width: 190px;
+  height: 254px;
+  cursor: pointer; /* Cambiar el cursor a una manita */
+  /* Resto de estilos de la carta aquí... */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover; /* Mantiene la proporción de aspecto y recorta si es necesario */
+}
+
+
+.content {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 300ms;
+  box-shadow: 0px 0px 10px 1px #000000ee;
+  border-radius: 5px;
+}
+
+.front, .back {
+  background-color: #151515;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.back {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.back::before {
+  position: absolute;
+  content: ' ';
+  display: block;
+  width: 160px;
+  height: 160%;
+  background: linear-gradient(90deg, transparent, #b10404, #c65708, #b10404, #c65708, transparent);
+  animation: rotation_481 5000ms infinite linear;
+}
+
+.back-content {
+  position: absolute;
+  width: 99%;
+  height: 99%;
+  background-color: #151515;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.card:hover .content {
+  transform: rotateY(180deg);
+}
+
+@keyframes rotation_481 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  0% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.front {
+  transform: rotateY(180deg);
+  color: white;
+}
+
+.front .front-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.front-content .badge {
+  background-color: #00000055;
+  padding: 2px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+  width: fit-content;
+}
+
+.description {
+  box-shadow: 0px 0px 10px 5px #00000088;
+  width: 100%;
+  padding: 10px;
+  background-color: #00000099;
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 11px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title p {
+  width: 50%;
+}
+
+.card-footer {
+  color: #ffffff88;
+  margin-top: 5px;
+  font-size: 8px;
+}
+
+.front .img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #ffbb66;
+  position: relative;
+  filter: blur(15px);
+  animation: floating 2600ms infinite linear;
+}
+
+#bottom {
+  background-color: #ff8866;
+  left: 50px;
+  top: 0px;
+  width: 150px;
+  height: 150px;
+  animation-delay: -800ms;
+}
+
+#right {
+  background-color: #ff2233;
+  left: 160px;
+  top: -80px;
+  width: 30px;
+  height: 30px;
+  animation-delay: -1800ms;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+
+
+@media screen and (max-width: 800px) {
+  /* Estilos para dispositivos con un ancho máximo de 800px */
+  body {
+    font-size: 14px;
+  }
+
+  header .logotipo {
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+
+  header .contenedor {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pelicula-principal {
+    font-size: 14px;
+  }
+
+  .pelicula-principal .descripcion {
+    max-width: 100%;
+  }
+
+  .cart-arriba,
+  .cart-abajo {
+    flex-direction: column; /* Cambia la dirección de las cartas a columna */
+    align-items: center; /* Centra las cartas horizontalmente */
+    margin: 10px;
+  }
+
+  .cart-arriba .card,
+  .cart-abajo .card {
+    width: 60%; /* Establece el ancho de las cartas al 100% para ocupar el ancho completo del contenedor */
+    margin-bottom: 20px; /* Agrega margen inferior para separar las cartas verticalmente */
+  }
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+
+  /* Otros ajustes necesarios para dispositivos pequeños */
+}

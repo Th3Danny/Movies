@@ -1,0 +1,299 @@
+:root {
+    --rojo: #E50914;
+    --fondo: #141414;
+  }
+  
+  /* Reiniciar los estilos que el navegador tiene por defecto */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--fondo);
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  /* Estilos para la estructura general */
+.contenedor {
+    width: 95%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  header {
+    padding: 15px 0;
+  }
+  
+  header .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centrar verticalmente */
+  }
+  
+  header .logotipo {
+    font-family: "Bebas Neue", cursive;
+    font-weight: normal;
+    color: var(--rojo);
+    font-size: 40px;
+    text-decoration: none; /* Elimina cualquier subrayado que pueda haber */
+  }
+  
+  
+  
+  /* Estilos del menú */
+  header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    border: none;
+    background: none;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+  }
+  
+  header nav a::before {
+    margin-left: auto;
+  }
+  
+  header nav a::after,
+  a::before {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    transition: 0.5s;
+  }
+  
+  a:hover::after,
+  a:hover::before {
+    width: 100%;
+  }
+
+  /*pelicula*/
+ 
+  .pelicula-principal {
+    font-size: 16px;
+    min-height: 40.62em;
+    color: white;
+    margin-bottom: 3.12em;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .pelicula-principal .contenedor {
+    margin: 0 auto;
+    margin-bottom: 6.25em;
+    display: flex;
+    flex-direction: row; /* Cambia a dirección de fila */
+    align-items: center; /* Centra horizontalmente */
+    justify-content: flex-start; /* Alinea a la izquierda horizontalmente */
+    height: 70%; /* Ajusta la altura para ocupar el 80% de la altura de la pantalla */
+  }
+  
+
+
+/*estilos del contenedor de la imagen*/
+
+  /* Estilos para la imagen de la película */
+.pelicula img {
+  max-width: 100%; /* Cambia el ancho máximo al 100% */
+  height: auto;
+  display: block;
+}
+
+/* Estilos para el contenedor de la película */
+.pelicula {
+  background: #E50914;
+  max-width: 50%; /* Puedes ajustar este valor según tus necesidades */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+  
+  /* Estilos para la información de la película */
+  .informacion-pelicula {
+    max-width: 40%; /* Ajusta el ancho máximo según tus necesidades */
+   overflow: hidden;
+   display: block;
+   justify-content: center;
+   justify-items: center;
+   flex-direction: column;
+    padding: 20px; /* Espacio alrededor del contenido */
+    color: white;
+    
+  }
+  
+  
+  .titulo {
+    font-size: 24px; /* Tamaño de fuente del título */
+    font-weight: bold; /* Peso de la fuente (negrita) */
+    margin-bottom: 10px; /* Espacio inferior */
+    color: #fff; /* Color del texto (blanco en este caso) */
+    /* Otros estilos de fuente, como familia de fuentes y alineación, si es necesario */
+}
+
+  
+.descripcion {
+    font-family: 'Roboto', sans-serif; /* Fuente Roboto o una fuente similar */
+    font-size: 16px; /* Tamaño de fuente de la descripción */
+    margin-bottom: 20px; /* Espacio inferior */
+    color: #ccc; /* Color del texto (gris claro en este caso) */
+    /* Otros estilos de fuente, como familia de fuentes y alineación, si es necesario */
+}
+
+  
+  /* Estilos para el reproductor de película (ajusta según tus necesidades) 
+  .reproductor {
+    Estilos para el reproductor de vídeo o elementos de reproducción 
+  }
+  */
+  
+ /* Estilos para el formulario de comentarios */
+
+ .comentarios {
+    height: 300px; /* Altura fija del contenedor de comentarios */
+    overflow-y: auto; /* Habilitar el desplazamiento vertical cuando sea necesario */
+    padding: 20px; /* Espacio alrededor del contenido */
+    color: white;
+}
+/* Estilos para los comentarios existentes */
+.comentario {
+    font-family: Arial, sans-serif; /* Fuente Arial o una fuente similar */
+    margin-bottom: 10px; /* Espacio inferior entre comentarios */
+    padding: 10px; /* Espaciado interno del comentario */
+    border-radius: 5px; /* Borde redondeado */
+    color: white; /* Color del texto (blanco en este caso) */
+    transform: translateY(20px); /* Inicialmente, desplazado hacia abajo para la animación */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animación de entrada */
+
+    /* Otros estilos de fuente, como tamaño de fuente y alineación, si es necesario */
+}
+
+/* Estilos para los nuevos comentarios */
+#nuevos-comentarios .comentario {
+    background: #E50914; /* Fondo del comentario (rojo en este caso) */
+    margin-bottom: 10px; /* Espacio inferior entre comentarios */
+    padding: 10px; /* Espaciado interno del comentario */
+    border-radius: 5px; /* Borde redondeado */
+    color: white; /* Color del texto (blanco en este caso) */
+    opacity: 0; /* Comienza con una opacidad de 0 para la animación */
+    transform: translateY(20px); /* Inicialmente, desplazado hacia abajo para la animación */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animación de entrada */
+}
+
+/* Animación para mostrar los nuevos comentarios */
+#nuevos-comentarios .comentario.show {
+    opacity: 1; /* Hacer el comentario visible */
+    transform: translateY(0); /* Moverlo hacia arriba */
+    transition-delay: 0.2s; /* Retraso en la animación */
+}
+
+
+#nuevo-comentario-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #nuevo-comentario-form label,
+  #nuevo-comentario-form input,
+  #nuevo-comentario-form textarea,
+  #nuevo-comentario-form button {
+    display: block;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  #nuevo-comentario-form input,
+  #nuevo-comentario-form textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    border: none;
+    color: white;
+  }
+  
+  #nuevo-comentario-form input:focus,
+  #nuevo-comentario-form textarea:focus {
+    background-color: #555;
+    outline: none;
+  }
+  
+  #nuevo-comentario-form button {
+    background-color: var(--rojo);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #nuevo-comentario-form button:hover {
+    background-color: #ff3737;
+  }
+  
+  /* Animación para el botón "Agregar Comentario" */
+  #nuevo-comentario-form button {
+    transform: scale(1);
+    transition: transform 0.2s ease;
+  }
+  
+  #nuevo-comentario-form button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Estilos para los nuevos comentarios */
+  #nuevos-comentarios .comentario {
+    background: #E50914;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Animación para mostrar los nuevos comentarios */
+  #nuevos-comentarios .comentario.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+  
+/*seccion de estrellitas*/
+
+.rating {
+    display: inline-block;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+  }
+  
+  .rating label:before {
+    content: '\2605';
+    font-size: 30px;
+  }
+  
+  .rating input:checked ~ label,
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: var(--rojo);
+    transition: color 0.3s;
+  }
+  
+  
+  
+  
+  
