@@ -1,156 +1,79 @@
-// const urlParams = new URLSearchParams(window.location.search);
-// const myParam   = urlParams.get('id');
+document.addEventListener('DOMContentLoaded', () => {
+  const cardsContainer = document.getElementById('cards-container');
 
-//obtener informacion de la api
+  function crearTarjeta(pelicula) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.url = `URL_CARD_${pelicula.idpeliculas}`;
 
+    const content = document.createElement('div');
+    content.classList.add('content');
 
+    const back = document.createElement('div');
+    back.classList.add('back');
 
+    const backContent = document.createElement('div');
+    backContent.classList.add('back-content');
 
+    const strong = document.createElement('strong');
+    strong.innerHTML = `<img src="./images/${pelicula.nombre}.jpg" alt="${pelicula.nombre}">`;
 
+    backContent.appendChild(strong);
+    back.appendChild(backContent);
+    content.appendChild(back);
 
+    const front = document.createElement('div');
+    front.classList.add('front');
 
+    const frontContent = document.createElement('div');
+    frontContent.classList.add('front-content');
 
+    front.appendChild(frontContent);
+    content.appendChild(front);
 
+    card.appendChild(content);
 
+    return card;
+  }
 
+  function actualizarTarjeta(card, descripcion, url) {
+    const frontContent = card.querySelector('.front-content');
+    const descripcionElement = document.createElement('p');
+    descripcionElement.textContent = descripcion;
+    frontContent.appendChild(descripcionElement);
 
+    const button = document.createElement('button');
+    button.classList.add('card-button');
+    button.textContent = 'Ver más';
+    button.addEventListener('click', () => {
+      window.location.href = url;
+    });
+    frontContent.appendChild(button);
+  }
 
+  function getMoviesFromAPI() {
+    return axios.get('http://localhost:3003/peliculas')
+      .then(response => {
+        console.log('Datos de películas obtenidos desde la API:', response.data.peliculas);
+        return response.data.peliculas;
+      })
+      .catch(error => {
+        console.error('Error al obtener los datos de películas desde la API:', error);
+        throw error;
+      });
+  }
 
+  getMoviesFromAPI()
+    .then((peliculasDesdeAPI) => {
+      peliculasDesdeAPI.forEach((pelicula, index) => {
+        const card = crearTarjeta(pelicula);
+        cardsContainer.appendChild(card);
 
-//seccion de comentarios 
-
-
-// Obtener todos los elementos del carrusel
-const carouselItems = document.querySelectorAll('.carousel-item');
-
-// Agregar un controlador de eventos a cada elemento del carrusel
-carouselItems.forEach(item => {
-  // Cambiar el cursor al pasar el cursor sobre el elemento
-  item.style.cursor = 'pointer';
-
-  // Agregar un controlador de eventos clic para redirigir al usuario
-  item.addEventListener('click', () => {
-    // Obtener la URL de redirección desde el atributo "data-url" del elemento del carrusel
-    const redirectURL = item.getAttribute('data-url');
-    
-    // Redirigir al usuario a la URL deseada
-    window.location.href = redirectURL;
-  });
-});
-
-
-
-// Obtener todos los botones dentro de las cards
-const cardButtons = document.querySelectorAll('.card-button');
-
-// Agregar un controlador de eventos clic a cada botón
-cardButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Obtener la URL de redirección desde el atributo "data-url" del botón
-    const redirectURL = button.getAttribute('data-url');
-    
-    // Redirigir al usuario a la URL deseada
-    window.location.href = redirectURL;
-  });
-});
-
-
-
-
-
-   // script.js
-   document.addEventListener('DOMContentLoaded', function() {
-    const carouselList = document.querySelector('.carousel-list');
-    const carouselItems = document.querySelectorAll('.carousel-item');
-
-    let currentIndex = 0;
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % carouselItems.length;
-        updateCarousel();
-    }
-
-    function updateCarousel() {
-        const translateX = -currentIndex * 100;
-        carouselList.style.transform = `translateX(${translateX}%)`;
-    }
-
-    setInterval(nextSlide, 3000); // Cambia automáticamente cada 3 segundos
-});
-   
-
-
-
-class Api {
-    constructor(_endpoint) {
-        this.domain   = "https://api.themoviedb.org/3/";
-        this.endpoint = _endpoint;
-    }
-
-    async get(params) {
-        let URL = this.domain+this.endpoint+params;
-        return await fetch(URL);
-    }
-}
-
-class MovieService extends Api {
-    
-    constructor() {
-        super("movie/157336");
-    }
-
-    async getMovies(params) {
-        return this.get(params);
-    }
-
-}
-
-let moviesService = new MovieService();
-let params = "?api_key=1ba39c30492a7fe2105c6bbbbbc99b4b";
-
-let response = moviesService.getMovies(params);
-response.then(res => res.json())
-    .then(res => console.log(res));
-
-
-let movies = [
-    {
-        id:1,
-        title:"Nueva pelicula",
-        url_image:"https://www.themoviedb.org/t/p/w440_and_h660_face/fNtqD4BTFj0Bgo9lyoAtmNFzxHN.jpg"
-    },
-    {
-        id:1,
-        title:"Nueva pelicula",
-        url_image:"https://www.themoviedb.org/t/p/w440_and_h660_face/fNtqD4BTFj0Bgo9lyoAtmNFzxHN.jpg"
-    },
-    {
-        id:1,
-        title:"Nueva pelicula",
-        url_image:"https://www.themoviedb.org/t/p/w440_and_h660_face/fNtqD4BTFj0Bgo9lyoAtmNFzxHN.jpg"
-    },
-    {
-        id:1,
-        title:"Nueva pelicula",
-        url_image:"https://www.themoviedb.org/t/p/w440_and_h660_face/fNtqD4BTFj0Bgo9lyoAtmNFzxHN.jpg"
-    }
-];
-
-
-
-let content = document.getElementById("peliculas-items");
-
-movies.map((movie) => {
-    let peliculaCard = document.createElement("div");
-    peliculaCard.className = "pelicula";
-    let img = document.createElement("img");
-    img.src = movie.url_image;
-
-    let titleMovie = document.createElement("h4");
-    titleMovie.textContent = movie.title;
-    titleMovie.className = "pelicula-titulo";
-
-    peliculaCard.appendChild(img);
-    peliculaCard.appendChild(titleMovie);
-    content.appendChild(peliculaCard);
+        const url = `../pages/Espesifica.html?id=${pelicula.idpeliculas}`;
+        actualizarTarjeta(card, pelicula.descripcion, url);
+      });
+    })
+    .catch(error => {
+      console.error('Error al obtener los datos de películas desde la API:', error);
+    });
 });
