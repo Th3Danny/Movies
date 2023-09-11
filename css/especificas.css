@@ -96,79 +96,95 @@
   
 
 
-/*estilos del contenedor de la imagen*/
-
-  /* Estilos para la imagen de la película */
-.pelicula img {
-  max-width: 100%; /* Cambia el ancho máximo al 100% */
-  height: auto;
-  display: block;
-}
-
 /* Estilos para el contenedor de la película */
 .pelicula {
-  background: #E50914;
+  justify-content: center;
+  justify-items: center;
   max-width: 50%; /* Puedes ajustar este valor según tus necesidades */
   margin: 0 auto; /* Centra el contenedor horizontalmente */
 }
   
-  /* Estilos para la información de la película */
-  .informacion-pelicula {
-    max-width: 40%; /* Ajusta el ancho máximo según tus necesidades */
-   overflow: hidden;
-   display: block;
-   justify-content: center;
-   justify-items: center;
-   flex-direction: column;
-    padding: 20px; /* Espacio alrededor del contenido */
-    color: white;
-    
-  }
-  
-  
-  .titulo {
-    font-size: 24px; /* Tamaño de fuente del título */
-    font-weight: bold; /* Peso de la fuente (negrita) */
-    margin-bottom: 10px; /* Espacio inferior */
-    color: #fff; /* Color del texto (blanco en este caso) */
-    /* Otros estilos de fuente, como familia de fuentes y alineación, si es necesario */
+.informacion-pelicula {
+  max-width: 40%; /* Ajusta el ancho máximo según tus necesidades */
+  overflow: hidden;
+  display: block;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+  padding: 20px; /* Espacio alrededor del contenido */
+  color: white;
+  margin-right: 20px; /* Espacio derecho para separar la información de la película de la imagen */
 }
 
   
+  
+  /* Estilos para el título de la película */
+.titulo {
+  font-size: 24px; /* Tamaño de fuente del título */
+  font-weight: bold; /* Peso de la fuente (negrita) */
+  margin-bottom: 10px; /* Espacio inferior */
+  color: #fff; /* Color del texto (blanco en este caso) */
+  /* Otros estilos de fuente, como familia de fuentes y alineación, si es necesario */
+}
+
+  
+/* Estilos para la descripción de la película */
 .descripcion {
-    font-family: 'Roboto', sans-serif; /* Fuente Roboto o una fuente similar */
-    font-size: 16px; /* Tamaño de fuente de la descripción */
-    margin-bottom: 20px; /* Espacio inferior */
-    color: #ccc; /* Color del texto (gris claro en este caso) */
-    /* Otros estilos de fuente, como familia de fuentes y alineación, si es necesario */
+  font-family: 'Roboto', sans-serif; /* Fuente Roboto o una fuente similar */
+  font-size: 16px; /* Tamaño de fuente de la descripción */
+  margin-bottom: 20px; /* Espacio inferior */
+  color: #ccc; /* Color del texto (gris claro en este caso) */
+  /* Otros estilos de fuente, como familia de fuentes y alineación, si es necesario */
 }
 
-  
-  /* Estilos para el reproductor de película (ajusta según tus necesidades) 
-  .reproductor {
-    Estilos para el reproductor de vídeo o elementos de reproducción 
-  }
-  */
-  
- /* Estilos para el formulario de comentarios */
-
- .comentarios {
-    height: 300px; /* Altura fija del contenedor de comentarios */
-    overflow-y: auto; /* Habilitar el desplazamiento vertical cuando sea necesario */
-    padding: 20px; /* Espacio alrededor del contenido */
-    color: white;
+/* Estilos para las estrellas (rating) */
+.rating {
+  display: inline-block;
+  margin-top: 10px; /* Agrega espacio entre la descripción y las estrellas */
 }
+
+
+
+
+/* Estilos para la imagen de la película */
+.pelicula img {
+  max-width: 50%; /* Ancho máximo del 70% (puedes ajustar este valor según tus necesidades) */
+  display: block;
+  box-sizing: border-box; /* Incluye el padding en el cálculo del tamaño */
+  margin-left: auto; /* Mover la imagen hacia la derecha */
+  margin-right: 0; /* Resetear el margen derecho para asegurar que la imagen esté a la derecha */
+}
+
+
+
+/* Estilos para el contenedor de medios (imagen y video) */
+.media-container {
+  display: flex;
+  flex-direction: row-reverse; /* Invertir la dirección para que la imagen y el trailer estén más a la derecha */
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: flex-start; /* Alinear arriba */
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no caben en una línea */
+  margin-top: 20px; /* Espacio superior para separar la imagen y el video */
+}
+
+/* Estilos para el trailer */
+.trailer {
+  max-width: 100%; /* Ancho máximo para el trailer */
+  padding: 20px; /* Espacio alrededor del contenido */
+  box-sizing: border-box; /* Incluye el padding en el cálculo del tamaño */
+}
+ 
 /* Estilos para los comentarios existentes */
-.comentario {
-    font-family: Arial, sans-serif; /* Fuente Arial o una fuente similar */
-    margin-bottom: 10px; /* Espacio inferior entre comentarios */
-    padding: 10px; /* Espaciado interno del comentario */
-    border-radius: 5px; /* Borde redondeado */
-    color: white; /* Color del texto (blanco en este caso) */
-    transform: translateY(20px); /* Inicialmente, desplazado hacia abajo para la animación */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Animación de entrada */
-
-    /* Otros estilos de fuente, como tamaño de fuente y alineación, si es necesario */
+.comentarios {
+  font-family: Arial, sans-serif; /* Fuente Arial o una fuente similar */
+  margin-top: 20px; /* Mueve los comentarios más arriba */
+  margin-bottom: 10px; /* Espacio inferior entre comentarios */
+  padding: 10px; /* Espaciado interno del comentario */
+  border-radius: 5px; /* Borde redondeado */
+  color: white; /* Color del texto (blanco en este caso) */
+  transform: translateY(20px); /* Inicialmente, desplazado hacia abajo para la animación */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Animación de entrada */
+  /* Otros estilos de fuente, como tamaño de fuente y alineación, si es necesario */
 }
 
 /* Estilos para los nuevos comentarios */

@@ -174,6 +174,8 @@ a:hover::before {
   text-align: center;
   color: white;
   font-size: 35px;
+  box-shadow: 0px 0px 10px 5px #00000088;
+  background-color: #00000099;
   margin: 10px 0;
   position: relative; /* Agregar posición relativa al contenedor */
 }
@@ -185,13 +187,26 @@ a:hover::before {
   left: 0; /* Ajustar la posición izquierda para abarcar todo el ancho */
   width: 100%; /* Asegurarse de que la línea abarque todo el ancho */
   height: 5px; /* Grosor de la línea */
-  background-color: rgb(163, 10, 10); /* Color de la línea */
+
+  box-shadow: 0px 0px 10px 5px #00000088;
+  background-color: #00000099;
 }
 
 
 /*carts*/
 
 /* Estilos para las secciones de cartas */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start; /* Alinea las filas en la parte superior */
+  max-width: calc(4 * (190px + 3em)); /* Establece el ancho máximo del contenedor para 4 tarjetas por fila */
+  margin: 0 auto; /* Centra el contenedor en la página */
+}
+
+
 .cart-arriba,
 .cart-abajo {
   display: flex;

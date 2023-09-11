@@ -71,6 +71,58 @@ a:hover::before {
   width: 100%;
 }
 
+.pelicula-principal .banner {
+  font-size: 16px;
+  min-height: 650px; /* Ajusta la altura según tus necesidades */
+  color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url('../images/8.png');
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: 3.12em;
+  display: flex;
+  flex-direction: column; /* Cambia a dirección de columna para organizar el contenido verticalmente */
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  text-align: center; /* Centra el texto */
+}
+
+.pelicula-principal .banner .titulo {
+  font-weight: 600;
+    font-size: 3.12em; /*50 px*/
+    margin-bottom: 0.4em; /*20 px se calcula conforme a los 16px*/
+}
+
+.pelicula-principal .banner .descripcion {
+  font-weight: normal;
+    font-size: 1em;
+    line-height: 1.75em; /*28 px*/
+    max-width: 50%;
+    margin-bottom: 1.25em; /*20 px*/
+}
+
+.pelicula-principal .banner .boton {
+  background-color: rgba(0,0,0,0.5);
+    border:none;
+    border-radius: 0.31em; /*5px*/
+    padding: 0.93em 1.87em; /*15px 30px*/
+    color:white;
+    margin-right: 1.25em; /*20 px*/
+    cursor: pointer;
+    transition:.3s ease all;
+    font-size: 1.12em ; /*18px*/
+    margin-bottom: 1em;
+}
+
+.pelicula-principal .banner .boton:hover {
+  background-color: white;
+  color:#000;
+}
+
+.pelicula-principal .banner .boton i {
+  margin-right: 1.25em; /*25px*/
+}
+
+
 /* Película principal */
 .carousel {
   width: 70%; /* Cambia el ancho al 80% */
@@ -196,6 +248,17 @@ a:hover::before {
 /*carts*/
 
 /* Estilos para las secciones de cartas */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start; /* Alinea las filas en la parte superior */
+  max-width: calc(4 * (190px + 3em)); /* Establece el ancho máximo del contenedor para 4 tarjetas por fila */
+  margin: 0 auto; /* Centra el contenedor en la página */
+}
+
+
 .cart-arriba,
 .cart-abajo {
   display: flex;

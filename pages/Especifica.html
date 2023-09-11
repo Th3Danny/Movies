@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Película</title>
+    <link rel="stylesheet" href="../css/especificas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="5e2ESR8Ycmos6g3gAKr1Jvwye8sW4U1u/cAKulfVJnkakCcMqhOudbtPnvJ+nbv7" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h2 class="logotipo">EL RINCON DEL VIRGEN</h2>
+            <nav>
+                <a href="/">Inicio</a>
+                <a href="/pages/Peliculas.html">Peliculas</a>
+                <a href="/pages/Series.html">Series</a>
+                <a href="/pages/Popular.html">Popular</a>
+                <a href="/pages/Mas%20recientes.html">Mas reciente</a>
+            </nav>
+            
+        </div>
+    </header>
+    <main>
+        <div class="pelicula-principal">
+            <div class="contenedor">
+                <div class="informacion-pelicula">
+                    <div class="rating">
+                        <input value="5" name="rating" id="star5" type="radio">
+                        <label for="star5"></label>
+                        <input value="4" name="rating" id="star4" type="radio">
+                        <label for="star4"></label>
+                        <input value="3" name="rating" id="star3" type="radio">
+                        <label for="star3"></label>
+                        <input value="2" name="rating" id="star2" type="radio">
+                        <label for="star2"></label>
+                        <input value="1" name="rating" id="star1" type="radio">
+                        <label for="star1"></label>
+                    </div>
+                    
+                    <div class="titulo">
+                        <h1 id="titulo-pelicula">Título de la película</h1>
+                    </div>
+                    <div class="descripcion">
+                        <p id="descripcion-pelicula">Descripción de la película.</p>
+                    </div>
+
+
+                    <div class="comentarios" style="height: 300px; overflow-y: auto;">
+                        <h3>Comentarios</h3>
+                    
+                        <!-- Formulario para agregar nuevos comentarios -->
+                        <form id="nuevo-comentario-form">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" required>
+                            <label for="comentario">Comentario:</label>
+                            <textarea id="comentario" required></textarea>
+                            <button type="submit">Agregar Comentario</button>
+                        </form>
+                    
+                        <!-- Nuevos comentarios se agregarán aquí -->
+                        <div id="nuevos-comentarios"></div>
+                    
+                        <!-- Comentarios existentes -->
+                        <div class="comentario">
+                            <h4>Pepe</h4>
+                            <p>la vida mi hizo backend.</p>
+                        </div>
+                        <div class="comentario">
+                            <h4>Gerson</h4>
+                            <p>al fin podre cenar </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="media-container">
+                    <div class="pelicula">
+                        <img id="imagen-pelicula" src="" alt="Imagen de la película">
+                    </div>
+                    <div class="trailer">
+                        <iframe id="trailer-iframe" width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/Espescifica.js"></script>
+</body>
+</html>
