@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function actualizarTarjeta(card, descripcion, idpeliculas) {
         const frontContent = card.querySelector('.front-content');
-        
+
         // Define la longitud máxima para la descripción que deseas mostrar
         const maxLength = 100;
 
@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getMoviesFromAPI() {
         return axios
-            .get('http://localhost:3003/peliculas')
+            .get('http://localhost:3000/peliculas')
             .then((response) => {
-                console.log('Datos de películas obtenidos desde la API:', response.data.peliculas);
-                return response.data.peliculas;
+                console.log('Datos de películas obtenidos desde la API:', response.data);
+                return response.data;
             })
             .catch((error) => {
                 console.error('Error al obtener los datos de películas desde la API:', error);
@@ -179,20 +179,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
     getMoviesFromAPI()
-    .then((seriesDesdeAPI) => {
-        if (seriesDesdeAPI && Array.isArray(seriesDesdeAPI)) {
-            seriesDesdeAPI.forEach((serie, index) => {
-                const card = crearTarjeta(serie);
-                cardsContainer.appendChild(card);
+        .then((seriesDesdeAPI) => {
+            if (seriesDesdeAPI && Array.isArray(seriesDesdeAPI)) {
+                seriesDesdeAPI.forEach((serie, index) => {
+                    const card = crearTarjeta(serie);
+                    cardsContainer.appendChild(card);
 
-                actualizarTarjeta(card, serie.descripcion, serie.idseries);
-            });
-        } else {
-            console.error('La respuesta de la API no contiene datos válidos:', seriesDesdeAPI);
-        }
-    })
-    .catch((error) => {
-        console.error('Error al obtener los datos de series desde la API:', error);
-    });
+                    actualizarTarjeta(card, serie.descripcion, serie.idseries);
+                });
+            } else {
+                console.error('La respuesta de la API no contiene datos válidos:', seriesDesdeAPI);
+            }
+        })
+        .catch((error) => {
+            console.error('Error al obtener los datos de series desde la API:', error);
+        });
 
 });

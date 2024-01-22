@@ -1,0 +1,24 @@
+{
+  "name": "movies-ids-main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "debug": "^4.3.4",
+    "engine.io-client": "^6.5.3",
+    "engine.io-parser": "^5.2.1",
+    "ms": "^2.1.2",
+    "socket.io-client": "^4.7.4",
+    "socket.io-parser": "^4.2.4",
+    "ws": "^8.11.0",
+    "xmlhttprequest-ssl": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

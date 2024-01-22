@@ -425,6 +425,14 @@ a:hover::before {
   .pelicula-principal .descripcion {
     max-width: 100%;
   }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start; /* Alinea las filas en la parte superior */
+    max-width: calc(4 * (190px + 3em)); /* Establece el ancho máximo del contenedor para 4 tarjetas por fila */
+    margin: 0 auto; /* Centra el contenedor en la página */
+  }
 
   .cart-arriba,
   .cart-abajo {

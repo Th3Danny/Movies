@@ -309,6 +309,57 @@
     transition: color 0.3s;
   }
   
+  @media screen and (max-width: 800px) {
+    /* Estilos para dispositivos con un ancho máximo de 800px */
+    body {
+      font-size: 14px;
+    }
+  
+    header .logotipo {
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+  
+    header .contenedor {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .pelicula-principal {
+      font-size: 14px;
+    }
+  
+    .pelicula-principal .descripcion {
+      max-width: 100%;
+    }
+    .informacion-pelicula {
+      text-align: center; /* Centra el contenido */
+  }
+  
+  
+  .rating {
+      order: 1; /* Mueve las estrellas arriba */
+      margin-top: 20px; /* Agrega espacio entre las estrellas y la descripción */
+  }
+  
+  .descripcion {
+      max-width: 100%; /* Ancho máximo para la descripción */
+  }
+  
+  .trailer {
+      order: 2; /* Mueve el trailer hacia abajo */
+      max-width: 100%; /* Ancho máximo para el trailer */
+      padding: 10px; /* Espacio alrededor del contenido */
+      box-sizing: border-box; /* Incluye el padding en el cálculo del tamaño */
+  }
+  
+  
+    
+   
+  
+  
+    /* Otros ajustes necesarios para dispositivos pequeños */
+  }
   
   
   
