@@ -1,4 +1,7 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
+    const socket2 = io("http://localhost:3000")
     const socket = new WebSocket("ws://localhost:3002");
 
     socket.addEventListener("open", () => {
@@ -29,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elemento.style.display = 'none';
         });
 
-        axios.get(`http://localhost:3000/api/peliculas/${peliculaId}`)
+        axios.get(`http://localhost:3000/api/peliculas/id/${peliculaId}`)
             .then(response => {
 
                 const data = response.data;
@@ -86,26 +89,78 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Formulario de nuevo comentario
-    const formulario = document.getElementById("nuevo-comentario-form");
-    const comentariosContainer = document.querySelector(".comentarios");
+   
+});
 
-    formulario.addEventListener("submit", function (e) {
-        e.preventDefault();
 
-        const nombre = document.getElementById("nombre").value;
-        const comentario = document.getElementById("comentario").value;
+document.addEventListener('DOMContentLoaded', function () {
+     // Formulario de nuevo 
+     const formulario = document.getElementById("nuevo-comentario-form");
+     const comentariosContainer = document.querySelector(".comentarios");
+ 
 
-        const nuevoComentario = document.createElement("div");
-        nuevoComentario.classList.add("comentario");
-        nuevoComentario.innerHTML = `
-            <h4>${nombre}</h4>
-            <p>${comentario}</p>
-        `;
+     var socketGlobal;
+     var mensaje=[];
 
-        comentariosContainer.appendChild(nuevoComentario);
 
-        document.getElementById("nombre").value = "";
-        document.getElementById("comentario").value = "";
-    });
+     formulario.addEventListener("submit", function (e) {
+         e.preventDefault();
+ 
+         const nombre = document.getElementById("nombre").value;
+        
+         socketGlobal.emit('chat message', nombre, 1);
+         
+     });
+    
+    
+
+    const joinRoom = (socket, roomName) => {
+       
+
+        socket.emit('join room', roomName);
+    };
+
+    const setMessages = (newMessages) => {
+        console.log(newMessages);
+    };
+
+    const conexionSocket = () => {
+        const newSocket = io('http://localhost:3000');
+
+        newSocket.on('connect', () => {
+            console.log('Conectado al servidor Socket.IO');
+
+            
+                joinRoom(newSocket, 1);
+            
+        });
+
+        newSocket.on('chat message', (msg, roomName) => {
+            
+            mensaje.push(msg.msg);
+            
+         const nuevoComentario = document.createElement("div");
+         nuevoComentario.classList.add("comentario");
+         nuevoComentario.innerHTML = `
+             <h4>${mensaje[mensaje.length-1]}</h4>
+         
+         `;
+ 
+         comentariosContainer.appendChild(nuevoComentario);
+ 
+         document.getElementById("nombre").value = "";
+            
+            
+        });
+        socketGlobal= newSocket;
+
+        // Puedes realizar otras acciones según tus necesidades
+
+        return () => {
+            newSocket.disconnect();
+        };
+    };
+
+    // Llamada a la función
+    conexionSocket();
 });
